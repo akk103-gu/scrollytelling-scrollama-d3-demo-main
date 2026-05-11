@@ -23,163 +23,80 @@
     <main>
    <section class="scrolly" id="scrolly1"> 
         <figure>
-            <div class="viz" id="intro_image">
-            <img src="img/house.png">
-            </div>
+            <img src="img/provinggrounds.png" class="scrolly-image" id="image-1">
+            <img src="img/beater.png" class="scrolly-image" id="image-2">
+            <img src="img/house.png" class="scrolly-image" id="image-3">
+
         </figure>
         <article>    
-            <div class="step">
-            <h2>The Studebakers</h2>
+            <div class="step" data-image="image-1">
                 <p>
             This story was inspired by an acquaintance of mine who was an heir to the Studebakers,
             a family of German immigrants who made their fortune in South Bend, Indiana during
             the early 1900's. 
                 </p>
+            <br></br>
                 <p>
             Studebaker began in the wagon business, transitioning to 
             automobiles during the 1910's as the private car market took off. The company limped along through 
             the Great Depression, but flourished during World War II under the Lend Lease Act where their trucks
-            became a staple on Allied front lines.
+            became a staple on Allied front lines. At its peak, Studebaker employed over 500,000 South Bend residents.
                 </p>
+            <br></br>
+                <p>
+                    <i>
+            Pictured: <a href="https://www.thetruthaboutcars.com/2013/11/the-ghosts-of-the-studebaker-proving-grounds/">The Studebaker Proving Grounds</a>
+                    </i>
+                </p>
+            </div>
+            <div class="step" data-image="image-2">
                 <p>
             The company saw a slow decline in the postwar period, as GM, Ford, and
             Chrysler pushed smaller competitors out of the automotive industry. Within a decade, the company which
             employed nearly all of the adult male population in South Bend vanished.
                 </p>
-                <p>
+              <p>
             Today, many lower and middle income residents
             are service workers at the University of Notre Dame, or work in retail or food service. White-collar residents
             are often expats from Chicago and Indianapolis, commuting in and out of the city to save on rent.
                 </p>
+            <br></br>
+                <p>
+                    <i>
+            Pictured: <a href="https://www.thetruthaboutcars.com/2013/11/the-ghosts-of-the-studebaker-proving-grounds/">Abandoned Studebaker Trucks</a>
+                    </i>
+                </p>
+            </div>
+            <div class="step" data-image="image-3">
                 <p>
             The words my friend used to describe his hometown included "bombed out" and "rotten".
             No significant wealth is produced in the area, and it's difficult for the native residents to find stable income
-            or housing. 
+            or housing.
                 </p>
+                <p>
+            This is an unfortunate reality in much of Middle America; the opportunities may have left decades ago,
+            but the families remain, while socioeconomic conditions around them decay. 
+                </p>
+            <br></br>
+                <p>
+                    <i>
+            Pictured: <a href="https://www.southbendtribune.com/story/news/local/2023/12/20/where-south-bend-will-demolish-more-homes-in-2024/71906492007/">House in South Bend set to be demolished.</a>
+            Part of a wider campaign to remove "blight" from the city to raise property values and make the city more attractive to tourists and homeowners.
+                    </i>
+                </p>
+            </div>
         </article>
     </section>
 
-    <section class="generic" id="intro">
-
-
-        </p>
-        <p class="seperator">
-        </p>
-      </section>
-      <section class = scrolly id="scrolly2"> <!--This is where the map will go.-->
-        <figure>
-          <div class="viz" id="avicii_viz"></div>
-        </figure>
-        <article>    
-            <div class="step" data-step="1">
-                <h2>The Album</h2>
-                <p>
-                    The story starts with a music album.
-                    In this case, it's Avicii's posthumous album TIM. 
-                    Each dot represents a song. 
-                    Hover over a dot to check the song titles.
-                </p>
-                <div class="comment_box">
-                    Note from a data scientist:
-                    If two time series exhibit change over time, then they'll be "correlated" by default. 
-                    We need another method to demonstrate a meaningful relationship.
-                </div>
-            </div>
-            
-            <div class="step" data-step="2">
-                <h2>Sentiment</h2>
-                <p>
-                    Using sentiment analysis,
-                    I turn the lyrics of a song into a data point with a sentiment score.
-                    The values range from -1.0 to +1.0 and give each song a
-                    <span class="label red">negative value</span>, 
-                    <span class="label">neutral value</span>, or 
-                    <span class="label green">positive value</span>.
-                </p>
-            </div>
-            
-            <div class="step" data-step="2">
-                <h2>Magnitude</h2>
-                <p>
-                    Besides a sentiment score, the analysis returns a magnitude value.
-                    This tells something about the way the sentiment is expressed in a song.
-                    Is it weak or strong?
-                    The magnitude defines the size of a dot.
-                </p>
-            </div>
-            
-            <div class="step" data-step="3">
-                <h2>Position x by sentiment</h2>
-                <p>
-                    Now that each song has two data values,
-                    I use those to reposition the songs.
-                    First, I change the horizontal position (x-axis) based on the sentiment score.
-                    But as you can see, some songs overlap...
-                </p>
-            </div>
-            
-            <div class="step" data-step="4">
-                <h2>Position y by magnitude</h2>
-                <p>
-                    In the same way I use the sentiment score for the horizontal position of the songs,
-                    I use the magnitude value for the vertical position (y-axis).
-                </p>
-            </div>
-            
-            <div class="step" data-step="5">
-                <h2>Simplify dots</h2>
-                <p>
-                    Now that I have updated the positions of the songs,
-                    I simplify the visualisation for the next phase of the story.
-                </p>
-            </div>
-            
-            <div class="step" data-step="6">
-                <h2>Draw a path </h2>
-                <p>
-                    Next up, I draw a path from dot to dot, starting at song 1, moving to song 2, 
-                    and continuing like this al the way up to the last song.
-                    But the result is a bit edgy...
-                </p>
-            </div>
-            
-            <div class="step" data-step="7">
-                <h2>Draw a curved path</h2>
-                <p>
-                    Luckily, there's an alternative.
-                    Bezier curves are paths that don't go straight, but curve from data point to data point.
-                    And combining this type of path with the data, I get a pretty interesting result...
-                </p>
-            </div>
-            
-            <div class="step" data-step="8">
-                <h2>The result</h2>
-                <p>
-                    When I clean up the final visualisation, I get a nice view of the generated shape.
-                    Keep in mind that this is all generated using code.
-                    But it doesn't look like that.
-                    It looks like it's a hand-drawn signature. 
-                    Pretty cool right?
-                </p>
-            </div>
-        </article>
-      </section>
 
       <section id="scrolly_lines">
       </section>
 
-      <section class="generic" id="outro">
-        <p class="seperator">
-        </p>
-        Schools, schools, schools.
-        <p>
- 
-    </section>
     <section class="generic" id="footer">
         <p>
             <i>
                 This project was largely inspired by <a href="http://www.edriessen.com/">Erik Dreissen's</a> scrollytelling demos and borrowed the
-                basic structure from his work. A.I. tools were used as minimally as possible for code structure, primarily assisting my literature search and finding codes for complete datasets.
+                basic structure from his work.
             </i>  
         </p>
       </section>

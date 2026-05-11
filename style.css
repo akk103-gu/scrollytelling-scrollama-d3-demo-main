@@ -7,12 +7,13 @@ body{
     font-weight: 300;
     font-size: 18px;
     line-height: 1.5em;
-    background-color: #F2E8DC;
+    background-color: #f2e8dc;
     background-image: url('img/studebaker.png');
+    opacity: 1.00;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: 75vw;
+    background-size: 85vw;
     color: #01080D;
 }
 
@@ -40,17 +41,35 @@ h3{
 }
 
 .scrolly {
-    width: 1100px;
+    max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     position: relative;
-    align-items: center;
+    display: flex;
+    align-items: flex-start;
+    gap: 10vh;
+}
+
+.scrolly-image {
+    grid-area: 1 / 1;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1;
+}   
+
+.scrolly-image.active {
+    opacity: 1;
+    z-index: 2;
 }
 
 article {
     position: relative;
     padding: 0;
-    z-index: 0;
-    max-width: 250px;
+    z-index: 3;
+    order: 1;
+    width: 250px;
+    flex-shrink: 0;
 }
 
 section.generic{
@@ -78,26 +97,17 @@ figure {
     position: -webkit-sticky;
     position: sticky;
     top: 10vh;
-    align-items: center;
-    width: 1000px;
-    margin: 0 auto;
+    display: grid;
+    flex: 1;
+    min-width: 0;
+    order: 2;
+    margin: 0;
+    background-color: #F2E8DC;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     z-index: 0;
 }
-
-#intro_image{
-    background-color: #F2E8DC;
-    width: 750px;
-    float: right;
-}
-
-#intro_image img{
-    width: 100%;
-    display: block;
-}
-
 
 #avicii_viz{
     background-color: #01080D;
@@ -117,6 +127,10 @@ figure {
     margin: 0;
 }
 
+.step p:last-child {
+    margin-bottom: 40px;
+}
+
 .step h2{
     text-align: left;
     font-size: 2em;
@@ -130,13 +144,13 @@ figure {
     padding-right: 15px;
     padding-left: 15px;
     padding-bottom: 15px;
-    color: #01080D;
-    background-color:#f2e8dc;
+    color: #01080db1;
+    background-color:#f2e8dccc;
 }
 
 .step.is-active h2, .step.is-active p{
     color: #01080D;
-    background-color:#f2e8dccc;
+    background-color:#f2e8dc;
 }
 
 p{
@@ -226,5 +240,28 @@ a{
 #footer p{
     width: 500px;
     margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+    .scrolly {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    article {
+        width: 100%;
+    }
+
+    figure {
+        position: relative;
+        top: 0;
+        width: 100%;
+    }
+
+    section.generic,
+    #footer p {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
 
