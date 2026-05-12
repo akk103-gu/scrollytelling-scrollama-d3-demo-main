@@ -106,5 +106,16 @@ scrollerWages
         if (stepName) updateWages(stepName);
     });
 
+var mapSteps = d3.selectAll("#scrolly-map article .step");
+var scrollerMap = scrollama();
+scrollerMap
+    .setup({ step: "#scrolly-map article .step", offset: 0.5 })
+    .onStepEnter(function(response) {
+        mapSteps.classed("is-active", function(d, i) {
+            return i === response.index;
+        });
+        const stepName = response.element.getAttribute("data-step");
+        if (stepName) updateMap(stepName);
+    });
 // kick things off
 init();

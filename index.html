@@ -167,6 +167,7 @@
                 <p>
                 We can further contextualize these trends by visualizing wage shifts for all private sector workers (marked in red). This includes growing sectors,
                 such as work in service jobs and tech. At a glance, it appears that the two trend lines move alongside one another, reflecting shocks in the job market which affected the entire workforce.
+                However, the combined workforce also includes sectors which are growing in numbers, so occasionally, an increase in the line does indicate job recovery alongside improving wages.
                 </p>
                 <br></br>
                 <p>
@@ -175,16 +176,15 @@
                 </p>
             </div>
             <div class="step" data-step="all-breaks">
-                <p>Sample text</p>
-            </div>
-            <div class="step" data-step="step3">
                 <p>
-                On a final note: I was able to find co-integration in the first five years of the data, meaning that the wages for both
+                I was able to find significant co-integration in the first five years of the data, meaning that the wages for both
                 manufacturing and the entire private sector moved in unison.
                 However, past the first five years, there appeareded to be no co evidence in favor of co-integration. This suggests that following
                 the first 5 years during the overlap (between the first set of break points), wages for manufacturing experienced a decoupling with the 
                 rest of the economy, and stagnated while wages elsewhere dropped, and then shot up. While visually unintitive, it makes sense, as manufacturing 
                 workers would come to represent a smaller and smaller piece of the American wages, and would thus have a smaller overall impact on the broader trends.
+                We can observe this decoupling more broadly by looking at the location of each break point. The wages for all workers experienced ruptures that seemingly did not
+                appear within the manufacturing wages (e.g., in 1999 and 1980), demonstrating that the two trends are often moving independently.
                 </p>
             </div>
         </article>
@@ -193,7 +193,25 @@
     <!--Map section-->
     <section class="scrolly" id="scrolly-map">
         <figure>
+            <div id="map-viz"></div>
         </figure>
+        <article>
+            <div class="step" data-step="show-map">
+            <p>To summarize the previous section,</p>
+            </div>
+            <div class="step" data-step="show-map">
+            <p>hi</p>
+            </div>
+
+            <div class="step" data-step="show-map">
+            <p>hi</p>
+            </div>
+
+            <div class="step" data-step="show-map">
+            <p>hi</p>
+            </div>
+
+        </article>
     </section>
 
     <section class="generic" id="footer">
@@ -210,7 +228,8 @@
     <script src="src/d3.5.9.1.min.js"></script>
     <script src="src/scrollama.min.js"></script>
     <script src="data/laborData.js"></script>
-    <script src="src/topojson.v3.min.js"></script>
+    <script src="data/rustbelddata.js"></script>
+    <script src="data/topojson.min.js"></script>
     <script src="d3-charts.js"></script>
     <script src="scrollama-settings.js"></script>
   </body>

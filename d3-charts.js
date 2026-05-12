@@ -220,3 +220,69 @@ function makeDims(containerId) {
         }
     };
 })();
+
+// ---- CHOROPLETH MAP ----
+(function() {
+    const { w, h } = makeDims("map-viz");
+
+    const svg = d3.select("#map-viz").append("svg")
+        .attr("viewBox", `0 0 ${w + margin.left + margin.right} ${h + margin.top + margin.bottom}`)
+        .attr("width", "100%") 
+        .attr("fill", "#000000");
+
+    svg.append("text")
+        .attr("x", (w + margin.left + margin.right) / 2)
+        .attr("y", 20)
+        .attr("text-anchor", "middle")
+        .attr("fill", "#f2e8dc")
+        .attr("font-size", "20px")
+        .text("Employment in manufacturing within the 'rust belt' states");
+
+    const g = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const projection = d3.geoAlbersUsa();
+    const path = d3.geoPath().projection(projection);
+
+    const color = d3.scaleSequential(d3.interpolateReds)
+        .domain([1, 0]);
+
+    // Build fips → value lookup from rustBeltData once data is populated
+    const dataByFips = {};
+    if (typeof rustBeltData !== "undefined" && Array.isArray(rustBeltData)) {
+        rustBeltData.forEach(d => { dataByFips[d.fips] = d.value; });
+    }
+
+    const rustBeltFips = new Set(["17", "18", "26", "36", "39", "42", "54", "55"]);
+
+    d3.json("data/states-10m.json").then(function(us) {
+        const states = topojson.feature(us, us.objects.states);
+
+        const rustBeltFeatures = {
+            type: "FeatureCollection",
+            features: states.features.filter(d => rustBeltFips.has(String(d.id)))
+        };
+
+        projection.fitExtent([[20, 20], [w - 20, h - 20]], rustBeltFeatures);
+
+        g.selectAll(".state")
+            .data(states.features)
+            .enter().append("path")
+            .attr("class", "state")
+            .attr("d", path)
+            .attr("fill", d => {
+                const val = dataByFips[d.id];
+                return val ? color(val) : "#222";
+            })
+            .attr("stroke", "#f2e8dc")
+            .attr("stroke-width", 0.5)
+            .attr("opacity", 0);
+    });
+
+    window.updateMap = function(stepName) {
+        if (stepName === "show-map") {
+            g.selectAll(".state")
+                .transition().duration(800).attr("opacity", 1);
+        }
+    };
+})();

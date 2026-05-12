@@ -91,6 +91,10 @@ h3{
     margin-top: 15vh;
 }
 
+#scrolly-map {
+    margin-top: 15vh;
+}
+
 article {
     position: relative;
     padding: 0;
@@ -294,7 +298,8 @@ a{
 }
 
 #unemployment-viz,
-#wages-viz {
+#wages-viz,
+#map-viz {
     background-color: #000;
 }
 
