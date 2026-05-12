@@ -238,22 +238,33 @@ function makeDims(containerId) {
         .attr("font-size", "20px")
         .text("Employment in manufacturing within the 'rust belt' states");
 
+    svg.append("text")
+        .attr("class", "chart-subtitle")
+        .attr("x", (w + margin.left + margin.right) / 2)
+        .attr("y", 40)
+        .attr("text-anchor", "middle")
+        .attr("fill", "#f2e8dc")
+        .attr("font-size", "14px")
+        .attr("opacity", 0.65)
+        .text("Hover over each state for discrete counts of manufacturing workers.");
+
     const g = svg.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const projection = d3.geoAlbersUsa();
     const path = d3.geoPath().projection(projection);
 
-    const color = d3.scaleSequential(d3.interpolateReds)
-        .domain([1, 0]);
+    const color = d3.scaleSequential(d3.interpolateRgb("#f2e8dc", "#A6055D"))
+    .domain([1, 0]);
 
-    // Build fips → value lookup from rustBeltData once data is populated
-    const dataByFips = {};
-    if (typeof rustBeltData !== "undefined" && Array.isArray(rustBeltData)) {
-        rustBeltData.forEach(d => { dataByFips[d.fips] = d.value; });
-    }
 
     const rustBeltFips = new Set(["17", "18", "26", "36", "39", "42", "54", "55"]);
+
+    const tooltip = d3.select("#map-viz")
+        .append("div")
+        .attr("class", "map-tooltip");
+
+    let currentLookup = {};
 
     d3.json("data/states-10m.json").then(function(us) {
         const states = topojson.feature(us, us.objects.states);
@@ -270,19 +281,40 @@ function makeDims(containerId) {
             .enter().append("path")
             .attr("class", "state")
             .attr("d", path)
-            .attr("fill", d => {
-                const val = dataByFips[d.id];
-                return val ? color(val) : "#222";
-            })
+            .attr("fill", "#222")
             .attr("stroke", "#f2e8dc")
             .attr("stroke-width", 0.5)
-            .attr("opacity", 0);
+            .attr("opacity", 0)
+            .on("mouseover", function(d) {
+                const entry = currentLookup[String(d.id)];
+                if (!entry) return;
+                const count = (entry.raw * 1000).toLocaleString();
+                tooltip.style("opacity", 1)
+                    .html(`<strong>${entry.name}</strong><br>${count} workers`);
+            })
+            .on("mousemove", function() {
+                tooltip
+                    .style("left", (d3.event.offsetX + 12) + "px")
+                    .style("top",  (d3.event.offsetY - 36) + "px");
+            })
+            .on("mouseout", function() {
+                tooltip.style("opacity", 0);
+            });
     });
 
     window.updateMap = function(stepName) {
-        if (stepName === "show-map") {
-            g.selectAll(".state")
-                .transition().duration(800).attr("opacity", 1);
-        }
+        const snapshot = typeof rustBeltData !== "undefined" ? rustBeltData[stepName] : null;
+        if (!snapshot) return;
+
+        currentLookup = {};
+        snapshot.forEach(d => { currentLookup[d.fips] = d; });
+
+        g.selectAll(".state")
+            .transition().duration(800)
+            .attr("opacity", 1)
+            .attr("fill", d => {
+                const entry = currentLookup[String(d.id)];
+                return entry ? color(entry.value) : "#222";
+            });
     };
 })();
