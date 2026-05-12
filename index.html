@@ -30,6 +30,9 @@
         </figure>
         <article>    
             <div class="step" data-image="image-1">
+                <h2>
+            De-industrialization and inequality in the United States
+                </h2>
                 <p>
             Last year, I met a writer and political theorist who was an heir to the Studebakers,
             a family of German immigrants who made their fortune in South Bend, Indiana during
@@ -114,16 +117,14 @@
                 However, the change which has really wounded the U.S. is the availability of work within the manufacturing sector.
                 This chart represents the total percentage of the U.S. workforce employed in manufacturing.
                 Since the mid-1960's (around the same time as the Studebaker closures), the percentage of Americans employed in manufacturing
-                has dropped at a near-constant rate. While it is true that 
+                has dropped at a near-constant rate. 
                 </p>
             </div>
             <div class="step" data-step="recovery">
                 <p>
-                <i>
-                Note from a D.S.: During my analysis, I tried looking for structural breaks in all of my available datasets, including this one. 
+                During my analysis, I tried looking for structural breaks in all of my available datasets, including this one. 
                 I was unable to pick up on any significant breaks in the rate of change, meaning that this downward trend never saw a significant period of recovery
                 between the mid-1960's through today.
-                </i>
                 </p>
             </div>
         </article>
@@ -136,24 +137,63 @@
         </figure>
         <article>
             <div class="step" data-step="baseline">
-                <p>Sample text</p>
-            </div>
-            <div class="step" data-step="step1">
-                <p>Sample text</p>
+                <p>
+                We can observe this general decline in the average inflation-adjusted wages of manufacturing workers, as well.
+                Wages shoot up drastically and peak just before 1980, before experiencing a sharp decline the following year.
+                </p>
             </div>
             <div class="step" data-step="mfg-breaks">
-                <p>Sample text</p>
+                <p>To get a sense for how the wage trends truly "behave", I used the <a href="https://centre-borelli.github.io/ruptures-docs/">Ruptures</a> library
+                in Python. This package detects likely points in the timeline in which the underlying data generating
+                process changed due to an external event.
+                Indeed, the first regime begins in 1971 and ends in 1987, which bookends the parametric "bump" in relative wages.
+
+                At first glance, it may seem that a spike in wages contradicts the relative decline in manufacturing jobs. However, as an industry shrinks,
+                the <a href="https://www.epi.org/publication/state-of-working-america-wages-in-2020/">lower-skilled, lower-paid workers are typically pushed out first</a>, 
+                increasing the representation of higher-paid workers in the average.
+                </p>
+                <br></br>
+                <p>The second regime shows a flattening out of the curve, with wages falling far below the peak, stabilizing over time. 
+                Rather than a sign of life, the periodic bumps may reflect system-wide layoffs of manufacturing workers, in the same manner as the post-1970 period.
+                Indeed, some of the most significant losses in terms of job counts occurred 
+                <a href="https://www.epi.org/publication/manufacturing-job-loss-trade-not-productivity-is-the-culprit/">between the year 2000 through the 2010's, with over 5 million jobs lost.</a>
+                The final regime was strongly influenced by the Covid 19 pandemic, grouping the rise and fall into a single trend.</p>
+                <p>
+                The constant decline in manufacturing jobs paints a negative picture of both the peaks and the valleys in the data. 
+                Peaks indicate that entry-level, low-skilled become less common, while valleys indicate that the wages tend to stabilize at lower levels for the remaining workers.
+                </p>
+            </div>
+            <div class="step" data-step="step1">
+                <p>
+                We can further contextualize these trends by visualizing wage shifts for all private sector workers (marked in red). This includes growing sectors,
+                such as work in service jobs and tech. At a glance, it appears that the two trend lines move alongside one another, reflecting shocks in the job market which affected the entire workforce.
+                </p>
+                <br></br>
+                <p>
+                Like the manufacturing dataset, the unusual wage spikes in 2008 and 2020 in both trends was due in part to<a href="https://www.epi.org/publication/state-of-working-america-wages-in-2020/"> low-paid workers
+                 exiting the workforce</a>, while relatively high-paying jobs remained. This explains why wages increased, despite a visible drop in manufacturing employment in the same year.
+                </p>
             </div>
             <div class="step" data-step="all-breaks">
                 <p>Sample text</p>
             </div>
             <div class="step" data-step="step3">
-                <p>Sample text</p>
+                <p>
+                On a final note: I was able to find co-integration in the first five years of the data, meaning that the wages for both
+                manufacturing and the entire private sector moved in unison.
+                However, past the first five years, there appeareded to be no co evidence in favor of co-integration. This suggests that following
+                the first 5 years during the overlap (between the first set of break points), wages for manufacturing experienced a decoupling with the 
+                rest of the economy, and stagnated while wages elsewhere dropped, and then shot up. While visually unintitive, it makes sense, as manufacturing 
+                workers would come to represent a smaller and smaller piece of the American wages, and would thus have a smaller overall impact on the broader trends.
+                </p>
             </div>
         </article>
     </section>
 
-    <section id="scrolly_lines">
+    <!--Map section-->
+    <section class="scrolly" id="scrolly-map">
+        <figure>
+        </figure>
     </section>
 
     <section class="generic" id="footer">
@@ -170,6 +210,7 @@
     <script src="src/d3.5.9.1.min.js"></script>
     <script src="src/scrollama.min.js"></script>
     <script src="data/laborData.js"></script>
+    <script src="src/topojson.v3.min.js"></script>
     <script src="d3-charts.js"></script>
     <script src="scrollama-settings.js"></script>
   </body>

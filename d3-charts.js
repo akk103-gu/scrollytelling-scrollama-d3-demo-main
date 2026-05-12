@@ -1,4 +1,4 @@
-const margin = { top: 40, right: 30, bottom: 40, left: 50 };
+const margin = { top: 65, right: 30, bottom: 40, left: 50 };
 
 function makeDims(containerId) {
     const el = document.getElementById(containerId);
@@ -20,10 +20,21 @@ function makeDims(containerId) {
 
     svg.append("text")
         .attr("x", (w + margin.left + margin.right) / 2)
-        .attr("y", margin.top - 4)
+        .attr("y", 20)
         .attr("text-anchor", "middle")
         .attr("fill", "#f2e8dc")
+        .attr("font-size", "20px")
         .text("Manufacturing as Share of Total Employment");
+
+    svg.append("text")
+        .attr("class", "chart-subtitle")
+        .attr("x", (w + margin.left + margin.right) / 2)
+        .attr("y", 40)
+        .attr("text-anchor", "middle")
+        .attr("fill", "#f2e8dc")
+        .attr("font-size", "14px")
+        .attr("opacity", 0.65)
+        .text("Represents jobs in manufacturing as a percentage of the total workforce.");
 
     const g = svg.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
@@ -73,10 +84,21 @@ function makeDims(containerId) {
 
     svg.append("text")
         .attr("x", (w + margin.left + margin.right) / 2)
-        .attr("y", margin.top - 4)
+        .attr("y", 20)
         .attr("text-anchor", "middle")
         .attr("fill", "#f2e8dc")
+        .attr("font-size", "20px")
         .text("Real Hourly Wages: Manufacturing vs. All Private Industries");
+
+    svg.append("text")
+        .attr("class", "chart-subtitle")
+        .attr("x", (w + margin.left + margin.right) / 2)
+        .attr("y", 40)
+        .attr("text-anchor", "middle")
+        .attr("fill", "#f2e8dc")
+        .attr("font-size", "14px")
+        .attr("opacity", 0.65)
+        .text("Adjusted for inflation. White = average manufacturing worker wages, Red = average of all non-supervisory wages.");
 
     const g = svg.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
