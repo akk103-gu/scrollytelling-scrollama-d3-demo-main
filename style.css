@@ -17,6 +17,26 @@ body{
     color: #01080D;
 }
 
+svg text {
+    font-family: inherit;
+    color: #f2e8dc;
+}
+
+#unemployment-viz .domain,
+#wages-viz .domain {
+    stroke: #f2e8dc;
+}
+
+#unemployment-viz .tick line,
+#wages-viz .tick line {
+    stroke: #f2e8dc;
+}
+
+#unemployment-viz .tick text,
+#wages-viz .tick text {
+    fill: #f2e8dc;
+}
+
 h1{
     font-size: 3em;
     line-height: 1em;
@@ -61,6 +81,14 @@ h3{
 .scrolly-image.active {
     opacity: 1;
     z-index: 2;
+}
+
+#scrolly-unemployment {
+    margin-top: 15vh;
+}
+
+#scrolly-wages {
+    margin-top: 15vh;
 }
 
 article {
@@ -264,4 +292,10 @@ a{
         box-sizing: border-box;
     }
 }
+
+#unemployment-viz,
+#wages-viz {
+    background-color: #000;
+}
+
 

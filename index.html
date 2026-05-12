@@ -31,7 +31,7 @@
         <article>    
             <div class="step" data-image="image-1">
                 <p>
-            This story was inspired by an acquaintance of mine who was an heir to the Studebakers,
+            Last year, I met a writer and political theorist who was an heir to the Studebakers,
             a family of German immigrants who made their fortune in South Bend, Indiana during
             the early 1900's. 
                 </p>
@@ -51,7 +51,7 @@
             </div>
             <div class="step" data-image="image-2">
                 <p>
-            The company saw a slow decline in the postwar period, as GM, Ford, and
+            The company saw a slow decline during the postwar period as GM, Ford, and
             Chrysler pushed smaller competitors out of the automotive industry. Within a decade, the company which
             employed nearly all of the adult male population in South Bend vanished.
                 </p>
@@ -63,7 +63,9 @@
             <br></br>
                 <p>
                     <i>
-            Pictured: <a href="https://www.thetruthaboutcars.com/2013/11/the-ghosts-of-the-studebaker-proving-grounds/">Abandoned Studebaker Trucks</a>
+            Pictured: <a href="https://www.thetruthaboutcars.com/2013/11/the-ghosts-of-the-studebaker-proving-grounds/">
+            Abandoned Studebaker Trucks
+                        </a>
                     </i>
                 </p>
             </div>
@@ -80,7 +82,7 @@
             <br></br>
                 <p>
                     <i>
-            Pictured: <a href="https://www.southbendtribune.com/story/news/local/2023/12/20/where-south-bend-will-demolish-more-homes-in-2024/71906492007/">House in South Bend set to be demolished.</a>
+            Pictured: <a href="https://www.southbendtribune.com/story/news/local/2023/12/20/where-south-bend-will-demolish-more-homes-in-2024/71906492007/">Abandoned house in South Bend set to be demolished.</a>
             Part of a wider campaign to remove "blight" from the city to raise property values and make the city more attractive to tourists and homeowners.
                     </i>
                 </p>
@@ -88,9 +90,71 @@
         </article>
     </section>
 
+    <!--Animated map section-->
 
-      <section id="scrolly_lines">
-      </section>
+    <!--Line chart section-->
+
+    <!--Employment-->
+    <section class="scrolly" id="scrolly-unemployment">
+        <figure>
+            <div id="unemployment-viz"></div>
+        </figure>
+        <article>
+            <div class="step" data-step="baseline">
+                <p>
+    
+                It's worth noting that manufacturing hasn't "disappeared", as much as the job market within manufacturing
+                has shrunk. The United States remains the world's fourth largest steel producer,
+                the second largest automaker, and the single largest aerospace exporter. From this perspective, American
+                manufacturing is still <a href="https://www.cato.org/publications/reality-american-deindustrialization#united-states-remains-manufacturing-powerhouse">quite powerful</a>.
+                </p>
+            </div>
+            <div class="step" data-step="recession">
+                <p>
+                However, the change which has really wounded the U.S. is the availability of work within the manufacturing sector.
+                This chart represents the total percentage of the U.S. workforce employed in manufacturing.
+                Since the mid-1960's (around the same time as the Studebaker closures), the percentage of Americans employed in manufacturing
+                has dropped at a near-constant rate. While it is true that 
+                </p>
+            </div>
+            <div class="step" data-step="recovery">
+                <p>
+                <i>
+                Note from a D.S.: During my analysis, I tried looking for structural breaks in all of my available datasets, including this one. 
+                I was unable to pick up on any significant breaks in the rate of change, meaning that this downward trend never saw a significant period of recovery
+                between the mid-1960's through today.
+                </i>
+                </p>
+            </div>
+        </article>
+    </section>
+
+    <!--Wages-->
+    <section class="scrolly" id="scrolly-wages">
+        <figure>
+            <div id="wages-viz"></div>
+        </figure>
+        <article>
+            <div class="step" data-step="baseline">
+                <p>Sample text</p>
+            </div>
+            <div class="step" data-step="step1">
+                <p>Sample text</p>
+            </div>
+            <div class="step" data-step="mfg-breaks">
+                <p>Sample text</p>
+            </div>
+            <div class="step" data-step="all-breaks">
+                <p>Sample text</p>
+            </div>
+            <div class="step" data-step="step3">
+                <p>Sample text</p>
+            </div>
+        </article>
+    </section>
+
+    <section id="scrolly_lines">
+    </section>
 
     <section class="generic" id="footer">
         <p>
@@ -104,11 +168,9 @@
 
 <!--     <div class='debug'></div> -->
     <script src="src/d3.5.9.1.min.js"></script>
-    <script src="src/intersection-observer.js"></script>
-    <script src="src/stickyfill.min.js"></script>
     <script src="src/scrollama.min.js"></script>
-    <script src="data/aviciiTimData.js"></script>
-    <script src="d3-animations.js"></script>
+    <script src="data/laborData.js"></script>
+    <script src="d3-charts.js"></script>
     <script src="scrollama-settings.js"></script>
   </body>
 </html>

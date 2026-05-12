@@ -53,7 +53,6 @@ function handleStepEnter(response) {
         showImage(imageId);
     }
 
-    // (Optional) Keep your other logic for d3-animations.js here if needed
 }
 
 function setupStickyfill() {
@@ -82,6 +81,30 @@ function init() {
     // setup resize event
     window.addEventListener("resize", handleResize);
 }
+
+var unemploymentSteps = d3.selectAll("#scrolly-unemployment article .step");
+var scrollerUnemployment = scrollama();
+scrollerUnemployment
+    .setup({ step: "#scrolly-unemployment article .step", offset: 0.5 })
+    .onStepEnter(function(response) {
+        unemploymentSteps.classed("is-active", function(d, i) {
+            return i === response.index;
+        });
+        const stepName = response.element.getAttribute("data-step");
+        if (stepName) updateUnemployment(stepName);
+    });
+
+var wagesSteps = d3.selectAll("#scrolly-wages article .step");
+var scrollerWages = scrollama();
+scrollerWages
+    .setup({ step: "#scrolly-wages article .step", offset: 0.5 })
+    .onStepEnter(function(response) {
+        wagesSteps.classed("is-active", function(d, i) {
+            return i === response.index;
+        });
+        const stepName = response.element.getAttribute("data-step");
+        if (stepName) updateWages(stepName);
+    });
 
 // kick things off
 init();
